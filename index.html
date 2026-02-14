@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a tale of letting love go</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+        :root {
+            --accent-color: #00f2ff; /* The bright cyan from your logo */
+            --bg-color: #0a0a0a;
+        }
+        .sub
+        {
+            font-size: 15px;
+            font-weight: 100;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: white;
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* 1. DECREASED HEADER SIZE */
+        header {
+            width: 100%;
+            text-align: center;
+            height: 120px;
+            background: url('/The\ Content/header.png');
+            background-size:cover;
+            background-position: 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #333;
+            text-shadow: 0 0 20px rgba(244, 244, 244, 0.5);
+        }
+
+        /* 2. INCREASED IMAGE SIZE & GRID */
+        .gallery {
+            display: grid;
+            justify-content: center;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 0fr)); /* Larger base size */
+            gap: 15px;
+            padding: 40px;
+            width: 90%;
+            max-width: 1080px;
+        }
+
+        .song-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #222;
+            aspect-ratio: 3/1;
+            max-width: 500px;
+            transition: aspect-ratio 1s ease;
+        }
+            
+
+        .song-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(80%) brightness(0.7) contrast(1.5);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: block;
+            
+        }
+
+        /* 3. HOVER POPUP (SONG NAME) */
+        .song-card::after {
+            content: attr(data-song);
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(0, 0, 0, 0.85);
+            color: var(--accent-color);
+            padding: 8px 15px;
+            font-size: 1rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: all 1s ease;
+            pointer-events: none;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+        }
+
+        .song-card:hover {
+            transform: scale(1.02);
+            z-index: 5;
+            border-color: var(--accent-color);
+            aspect-ratio: 3/4;
+        }
+
+        .song-card:hover img {
+            filter: grayscale(0%) brightness(1) blur(0px);
+        }
+
+        .song-card:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        
+
+        /* 4. CUSTOM SPOTIFY IFRAME STYLING */
+        .spotify-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 60px 0;
+            padding: 20px;
+            background: #121212; /* Spotify's dark grey */
+            border-radius: 20px;
+            border-left: 5px solid var(--accent-color);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .intro-outro-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #222;
+            aspect-ratio: 3/1;
+            transition: aspect-ratio 1s ease;
+        }
+            
+
+        .intro-outro-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(80%) brightness(0.7) contrast(1.5);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: block;
+            
+        }
+
+        .intro-outro-card:hover {
+            transform: scale(1.02);
+            z-index: 5;
+            border-color: var(--accent-color);
+            aspect-ratio: 3/4;
+        }
+
+        .intro-outro-card:hover img {
+            filter: grayscale(0%) brightness(1) blur(0px);
+        }
+
+        .intro-outro-card:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+    
+        iframe {
+            width: 100%;
+            border: none;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        a tale of letting love <br>
+        <div class="sub">{ an immersive experience }</div>
+        
+    </header>
+
+ <a style="max-width: 25%; transform:translateY(20px)" class="intro-outro-card" href="#">
+            <img src="/The Content/s1.png" alt="s1">
+        </a>
+    <div class="gallery">
+        <a href="SPOTIFY_LINK_HERE" class="song-card" data-song="Song Title Two">
+            <img src="/The Content/s2.png" alt="s2">
+        </a>
+        <a href="SPOTIFY_LINK_HERE" class="song-card" data-song="Song Title Three">
+            <img src="/The Content/s3.png" alt="s3">
+        </a>
+        <a href="SPOTIFY_LINK_HERE" class="song-card" data-song="Song Title Four">
+            <img src="/The Content/s4.png" alt="s4">
+        </a>
+        <a href="#" class="song-card" data-song="More Content..."><img src="/The Content/s5.png"></a>
+        <a href="#" class="song-card" data-song="More Content..."><img src="/The Content/s6.png"></a>
+        <a href="#" class="song-card" data-song="More Content..."><img src="/The Content/s7.png"></a>
+        <a href="#" class="song-card" data-song="More Content..."><img src="/The Content/s8.png"></a>
+        <a href="#" class="song-card" data-song="More Content..."><img src="/The Content/s9.png"></a>
+        <a href="#" class="song-card" data-song="More Content..."><img src="/The Content/s10.png"></a>
+        <a href="#" class="song-card" data-song="More Content..."><img src="/The Content/s11.png"></a>
+        <a href="#" class="song-card" data-song="More Content..."><img src="/The Content/s12.png"></a>
+        <a href="#" class="song-card" data-song="More Content..."><img src="/The Content/s13.png"></a>
+        
+    </div>
+<a style="max-width: 25%; transform:translateY(20px)" href="#" class="intro-outro-card"><img src="/The Content/s14.png"></a>
+
+    <div class="spotify-container">
+        <iframe src="https://open.spotify.com/embed/playlist/1Ymml39z3K4FiGzRvaG1nI?utm_source=generator" height="352">
+        </iframe>
+    </div>
+
+</body>
+</html>
